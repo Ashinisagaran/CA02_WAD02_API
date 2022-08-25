@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
-import { getNowPlayingMovies } from "../api/tmdb-api";
+import { getTopRatedMovies } from "../api/tmdb-api";
 import AddToPlaylistIcon from "../components/cardIcons/playlistAdd";
 import { Pagination } from '@mui/material';
 
-const NowPlayingMoviesPage = (props) => {
+const TopRatedMoviesPage = (props) => {
   const [page, setPage] = useState(1);
-  const {  data, error, isLoading, isError }  = useQuery(["nowPlayingMovies", page], getNowPlayingMovies)
+  const {  data, error, isLoading, isError }  = useQuery(["topRatedMovies", page], getTopRatedMovies)
 
   if (isLoading) {
         return <Spinner />
@@ -28,7 +28,7 @@ const NowPlayingMoviesPage = (props) => {
       return (
         <>
         <PageTemplate
-          title="Movies Playing Now"
+          title="Top Rated Movies"
           movies={movies}
           action={(movie) => {
             return (
@@ -42,5 +42,5 @@ const NowPlayingMoviesPage = (props) => {
     );
     };
 
-export default NowPlayingMoviesPage;
+export default TopRatedMoviesPage;
 

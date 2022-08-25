@@ -80,7 +80,7 @@ router.get('/tmdb/upcoming', asyncHandler( async(req, res) => {
 //     res.status(200).json(recommendationsMovies);
 //   }));
 
-  //Now Playing
+  //Top Rated
 router.get('/tmdb/top_rated', asyncHandler( async(req, res) => {
     const topRatedMovies = await getTopRatedMovies();
     res.status(200).json(topRatedMovies);
