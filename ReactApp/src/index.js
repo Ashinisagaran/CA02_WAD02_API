@@ -10,15 +10,13 @@ import MovieReviewPage from "./pages/movieReviewPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import PlaylistMoviesPage from "./pages/playlistMoviesPage";
 import PopularMoviesPage from "./pages/popularMoviesPage";
-import CastPage from "./pages/castPage";
 import RecommendationsPage from "./pages/recommendationsPage";
 
 import LoginPage from "./pages/loginPage";
 import AuthProvider from "./components/authContext";
-import PrivateRoute from "./components/privateRoute";
-import AuthHeader from "./components/authHeader";
+// import PrivateRoute from './components/privateRoute';
+import AuthHeader from './components/authHeader';
 import SignUpPage from "./pages/signUpPage";
-
 
 import SiteHeader from './components/siteHeader';
 import MoviesContextProvider from "./contexts/moviesContext";
@@ -43,23 +41,33 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
       <AuthProvider>
-      {/* <AuthHeader /> */}
+      <AuthHeader />
+      <ul>
+            <li>
+              <Link to="/" component={HomePage}>HomePage</Link>
+            </li>
+            {/* <li>
+              <Link to="/movies/upcoming" component={UpcomingMoviesPage}>Upcoming Movies</Link>
+            </li>
+            <li>
+              <Link to="/movies/popular" component={PopularMoviesPage}>Popular Movie</Link>
+            </li> */}
+          </ul>
         <SiteHeader />
         <MoviesContextProvider>
             {" "}
       <Switch>
         <Route exact path="/reviews/form" component={AddMovieReviewPage} />
         <Route path="/reviews/:id" component={MovieReviewPage} />
-        <PrivateRoute exact path="/movies/favorites" component={FavoriteMoviesPage} />
+        <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
         <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
-        <PrivateRoute exact path="/movies/playlist" component={PlaylistMoviesPage} />
-        
+        <Route exact path="/movies/playlist" component={PlaylistMoviesPage} />
         {/* New */}
         <Route exact path="/movies/popular" component={PopularMoviesPage} /> 
-        {/* <Route exact path="/movies/cast/:id" component={CastPage} /> */}
-        <PrivateRoute path="/movies/recommendations/:id" component={RecommendationsPage} />
+        <Route path="/movies/recommendations/:id" component={RecommendationsPage} />
 
-         {/* Login & SignUp */}
+         {/* Login & Signup */}
+
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
 

@@ -105,10 +105,10 @@ export const getMovie = (args) => {
           };
 
   export const getCast = (args) => {
-    const [, idPart, page] = args.queryKey;
+    const [, idPart] = args.queryKey;
     const { id } = idPart;
     return fetch(
-       `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
+       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
         ).then((response) => {
           if (!response.ok) {
             throw new Error(response.json().message);
@@ -139,4 +139,24 @@ export const getMovie = (args) => {
         });
       };
 
+
+      export const login = (username, password) => {
+        return fetch('/api/users', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            body: JSON.stringify({ username: username, password: password })
+        }).then(res => res.json())
+    };
+    
+    export const signup = (username, password) => {
+        return fetch('api/users?action=register', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            body: JSON.stringify({ username: username, password: password })
+        }).then(res => res.json())
+    };
         

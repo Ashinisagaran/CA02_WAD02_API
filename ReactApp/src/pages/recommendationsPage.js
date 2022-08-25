@@ -33,7 +33,7 @@ const RecommendationsPage = (props) => {
       return (
         <>
         <PageTemplate
-          title="Movie Recommendations"
+          title="Recommended Movies"
           movies={movies}
           action={(movie) => {
             return (

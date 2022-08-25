@@ -5,8 +5,8 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import MonetizationIcon from "@material-ui/icons/MonetizationOn";
 import StarRate from "@material-ui/icons/StarRate";
 import Button from "@material-ui/core/Button";
+import IconButton from '@mui/material/IconButton';
 import MovieIcon from "@material-ui/icons/Movie";
-import GroupIcon from "@material-ui/icons/Group";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews";
 import { Link } from "react-router-dom";
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 // import RecommendationsPage from "../pages/recommendationsPage";
 
 
@@ -75,12 +76,6 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       </Paper>
 
       <Paper component="ul" className={classes.root}>
-        {/* CAST ID INSTEAD OF MOVIE */}
-      <Link to={`/movies/cast/:id`}> 
-        <Button variant="outlined" startIcon={<GroupIcon />} color="secondary">
-          Movie Cast
-        </Button>
-      </Link>
         <li>
           <Chip label="Production Countries" className={classes.chip} color="primary" />
         </li>
@@ -91,9 +86,15 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         ))}
         <Link to={`/movies/recommendations/${movie.id}`}>
        <Button variant="outlined" startIcon={<MovieIcon />} color="secondary">
-          Similar Movies
+          Recommended Movies
        </Button>
        </Link>
+        </Paper>
+
+        <Paper component="ul" className={classes.root}>
+        <IconButton aria-label="cast">
+          <KeyboardDoubleArrowDownIcon label="cast" color="primary" />
+        </IconButton>
         </Paper>
 
 

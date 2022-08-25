@@ -16,7 +16,7 @@ import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png';
 // import { Link } from "react-router-dom";
 // import Avatar from "@material-ui/core/Avatar";
-import { CastContext } from "../../contexts/castContext";
+
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -26,35 +26,8 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CastCard({ cast, action}) {
+export default function CastCard({ cast}) {
   const classes = useStyles();
-  const { favorites, addToFavorites } = useContext(CastContext);
-  const { playlist, addToPlaylist } = useContext(CastContext);
-
-  if (favorites.find((id) => id === cast.id)) {
-    cast.favorite = true;
-  } else {
-    cast.favorite = false
-  }
-
-  if (playlist.find((id) => id === cast.id)) {
-    cast.playlist = true;
-  } else {
-    cast.playlist = false
-  }
-
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
-    addToFavorites(cast);
-
-  const handleAddToPlaylist = (e) => {
-    e.preventDefault();
-    addToPlaylist(cast);
-  };
-
-}
-
-
 
   return (
     <Card className={classes.card}>
@@ -62,7 +35,7 @@ export default function CastCard({ cast, action}) {
       className={classes.header}
       title={
         <Typography variant="h5" component="p">
-          {cast.name}{" "}
+          {cast.original_name}{" "}
         </Typography>
       }
     />
@@ -75,42 +48,30 @@ export default function CastCard({ cast, action}) {
         }
       />
       <CardContent>
-        <Grid container>
-          <Grid item xs={6}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+           <Grid item xs={6}>
            <Typography variant="h6" component="p">
-             Biography
-           </Typography>
-           <Typography variant="h6" component="p">
-             {cast.biography} 
+             {cast.name} 
            </Typography>
           </Grid>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {cast.birthday} 
-            </Typography>
-          </Grid>
-          <Grid item xs={6}>
+            <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
               {"  "} {cast.popularity}{" "}
             </Typography>
-          </Grid>
-          <Grid item xs={6}>
+            </Grid>
+            <Grid item xs={6}>
             <Typography variant="h6" component="p">
-              {cast.place_of_birth} 
+              {cast.character} 
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               {cast.known_for_department} 
             </Typography>
-          </Grid>
+            </Grid>
         </Grid>
       </CardContent>
-      <CardActions disableSpacing>
-        {action(cast)}
-      </CardActions>
     </Card>
   );
 }

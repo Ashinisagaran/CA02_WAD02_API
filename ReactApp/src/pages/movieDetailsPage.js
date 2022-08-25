@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
+import Cast from "../pages/castPage";
 import PageTemplate from "../components/templateMoviePage";
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from "react-query";
@@ -28,6 +29,7 @@ const MovieDetailsPage = (props) => {
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
+            <Cast movie={movie} />
           </PageTemplate>
         </>
       ) : (
