@@ -73,29 +73,11 @@ router.get('/tmdb/upcoming', asyncHandler( async(req, res) => {
     res.status(200).json(upcomingMovies);
   }));
 
-// //Recommendation
-// router.get('/tmdb/recommendations', asyncHandler( async(req, res) => {
-//     const id = parseInt(req.params.id);
-//     const recommendationsMovies = await getRecommendations();
-//     res.status(200).json(recommendationsMovies);
-//   }));
-
   //Top Rated
 router.get('/tmdb/top_rated', asyncHandler( async(req, res) => {
     const topRatedMovies = await getTopRatedMovies();
     res.status(200).json(topRatedMovies);
   }));
-
-//   // Get movie details
-// router.get('/:id', asyncHandler(async (req, res) => {
-//     const id = parseInt(req.params.id);
-//     const movie = await movieModel.findByMovieDBId(id);
-//     if (movie) {
-//         res.status(200).json(movie);
-//     } else {
-//         res.status(404).json({message: 'The resource you requested could not be found.', status_code: 404});
-//     }
-// }));
 
 //Popular
 router.get('/tmdb/popular', asyncHandler( async(req, res) => {
