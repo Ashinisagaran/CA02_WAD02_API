@@ -5,7 +5,7 @@ import movieModel from './movieModel';
 import asyncHandler from 'express-async-handler';
 import { getUpcomingMovies } from '../tmdb-api';
 import { getPopularMovies } from '../tmdb-api';
-import { getRecommendations } from '../tmdb-api';
+import { getNowPlayingMovies } from '../tmdb-api';
 
 const router = express.Router(); 
 
@@ -73,11 +73,29 @@ router.get('/tmdb/upcoming', asyncHandler( async(req, res) => {
     res.status(200).json(upcomingMovies);
   }));
 
-//Recommendation
-router.get('/tmdb/recommendations', asyncHandler( async(req, res) => {
-    const recommendationsMovies = await getRecommendations();
-    res.status(200).json(recommendationsMovies);
+// //Recommendation
+// router.get('/tmdb/recommendations', asyncHandler( async(req, res) => {
+//     const id = parseInt(req.params.id);
+//     const recommendationsMovies = await getRecommendations();
+//     res.status(200).json(recommendationsMovies);
+//   }));
+
+  //Recommendation
+router.get('/tmdb/nowPlaying', asyncHandler( async(req, res) => {
+    const nowPlayingMovies = await getNowPlayingMovies();
+    res.status(200).json(nowPlayingMovies);
   }));
+
+//   // Get movie details
+// router.get('/:id', asyncHandler(async (req, res) => {
+//     const id = parseInt(req.params.id);
+//     const movie = await movieModel.findByMovieDBId(id);
+//     if (movie) {
+//         res.status(200).json(movie);
+//     } else {
+//         res.status(404).json({message: 'The resource you requested could not be found.', status_code: 404});
+//     }
+// }));
 
 //Popular
 router.get('/tmdb/popular', asyncHandler( async(req, res) => {

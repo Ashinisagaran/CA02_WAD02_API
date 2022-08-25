@@ -15,7 +15,7 @@ import RecommendationsPage from "./pages/recommendationsPage";
 import LoginPage from "./pages/loginPage";
 import AuthProvider from "./components/authContext";
 // import PrivateRoute from './components/privateRoute';
-import AuthHeader from './components/authHeader';
+// import AuthHeader from './components/authHeader';
 import SignUpPage from "./pages/signUpPage";
 
 import SiteHeader from './components/siteHeader';
@@ -41,18 +41,18 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
       <AuthProvider>
-      <AuthHeader />
-      <ul>
+      {/* <AuthHeader /> */}
+      {/* <ul>
             <li>
               <Link to="/" component={HomePage}>HomePage</Link>
-            </li>
+            </li> */}
             {/* <li>
               <Link to="/movies/upcoming" component={UpcomingMoviesPage}>Upcoming Movies</Link>
             </li>
             <li>
               <Link to="/movies/popular" component={PopularMoviesPage}>Popular Movie</Link>
             </li> */}
-          </ul>
+          {/* </ul> */}
         <SiteHeader />
         <MoviesContextProvider>
             {" "}

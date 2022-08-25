@@ -141,6 +141,7 @@ export const getMovie = (args) => {
 
 
       export const login = (username, password) => {
+        console.log('/api/users')
         return fetch('/api/users', {
             headers: {
                 'Content-Type': 'application/json'
