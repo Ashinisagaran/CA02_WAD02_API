@@ -165,6 +165,8 @@ export const getMovie = (args) => {
             body: JSON.stringify({ username: username, password: password })
         }).then(res => res.json())
     };
+
+   
     
     export const signup = (username, password) => {
         return fetch('api/users?action=register', {
