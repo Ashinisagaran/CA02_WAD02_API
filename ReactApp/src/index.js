@@ -10,6 +10,7 @@ import MovieReviewPage from "./pages/movieReviewPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import PlaylistMoviesPage from "./pages/playlistMoviesPage";
 import PopularMoviesPage from "./pages/popularMoviesPage";
+import NowPlayingPage from "./pages/nowPlayingMoviesPage";
 import RecommendationsPage from "./pages/recommendationsPage";
 
 import LoginPage from "./pages/loginPage";
@@ -64,6 +65,7 @@ const App = () => {
         <Route exact path="/movies/playlist" component={PlaylistMoviesPage} />
         {/* New */}
         <Route exact path="/movies/popular" component={PopularMoviesPage} /> 
+        <Route exact path="/movies/nowPlaying" component={NowPlayingPage} /> 
         <Route path="/movies/recommendations/:id" component={RecommendationsPage} />
 
          {/* Login & Signup */}
